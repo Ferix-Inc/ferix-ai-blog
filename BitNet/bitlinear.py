@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 from transformers.models.llama.modeling_llama import LlamaRMSNorm
 
 
@@ -43,10 +44,6 @@ class BitLinear(nn.Linear):
     def __init__(self, in_features: int, out_features: int, bias: bool = True) -> None:
         super().__init__(in_features, out_features, bias)
         self.layer_norm = LlamaRMSNorm(in_features)
-        self.init()
-
-    def init(self):
-        torch.nn.init.kaiming_normal_(self.weight)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
@@ -57,7 +54,7 @@ class BitLinear(nn.Linear):
             torch.Tensor: an output tensor with shape [batch_size, seq_len, out_features]
         """
         x_norm = self.layer_norm(x)
-        x_quant = x_norm + (activation_quant(x) - x_norm).detach()
+        x_quant = x_norm + (activation_quant(x_norm) - x_norm).detach()
         w_quant = self.weight + (weight_quant(self.weight) - self.weight).detach()
         y = F.linear(x_quant, w_quant)
         return y
