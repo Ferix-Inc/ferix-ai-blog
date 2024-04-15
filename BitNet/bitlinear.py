@@ -11,11 +11,9 @@ QB = 2 ** (N_BIT - 1) - 1
 
 # https://github.com/microsoft/unilm/blob/master/bitnet/The-Era-of-1-bit-LLMs__Training_Tips_Code_FAQ.pdf
 def activation_quant(x: torch.Tensor) -> torch.Tensor:
-    """_summary_
-
+    """
     Args:
         x (torch.Tensor):an input tensor with shape [batch_size, seq_len, in_features]
-
     Returns:
         torch.Tensor: a quantized input tensor
     """
@@ -26,11 +24,9 @@ def activation_quant(x: torch.Tensor) -> torch.Tensor:
 
 # https://github.com/microsoft/unilm/blob/master/bitnet/The-Era-of-1-bit-LLMs__Training_Tips_Code_FAQ.pdf
 def weight_quant(w: torch.Tensor) -> torch.Tensor:
-    """_summary_
-
+    """
     Args:
-        w (torch.Tensor): a weight tensor with shape [in_features, out_features]
-
+        w (torch.Tensor): a weight tensor with shape [out_features, in_features]
     Returns:
         torch.Tensor: a quantized weight tensor
     """
@@ -49,7 +45,6 @@ class BitLinear(nn.Linear):
         """
         Args:
             x (torch.Tensor): an input tensor with shape [batch_size, seq_len, in_features]
-
         Returns:
             torch.Tensor: an output tensor with shape [batch_size, seq_len, out_features]
         """
