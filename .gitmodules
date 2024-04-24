@@ -1,3 +1,6 @@
 [submodule "submodules/transformers"]
 	path = submodules/transformers
 	url = https://github.com/huggingface/transformers.git
+[submodule "submodules/executorch"]
+	path = submodules/executorch
+	url = https://github.com/pytorch/executorch.git
