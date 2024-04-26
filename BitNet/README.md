@@ -3,7 +3,7 @@
 
 [BitNet b1.58論文](https://arxiv.org/pdf/2402.17764)  
 [BitNet論文](https://arxiv.org/pdf/2310.11453)  
-[ブログリンク](https://ai.ferix.jp/blog?id=nd-qq-au778i)
+[ブログ](https://ai.ferix.jp/blog?id=nd-qq-au778i)
 
 
 ## ディレクトリ構成
