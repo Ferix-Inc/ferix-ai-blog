@@ -11,7 +11,7 @@
 
 ### 記事一覧
 - [実践！BitNet b1.58を実装する](https://ai.ferix.jp/blog?id=nd-qq-au778i)
-- [ExecuTorchを用いたQuantization Aware Training実装]()
+- [ExecuTorchを用いたQuantization Aware Training実装](https://ai.ferix.jp/blog?id=ko5bd_adugq)
 
 ## ライセンス
 
