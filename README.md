@@ -9,7 +9,7 @@
 このリポジトリのソースコードは、主にブログ記事のサンプルコードや、記事内で使用されるデータセットなどを含んでいます。
 各ディレクトリには、関連するブログ記事のリンクが含まれているため、具体的な使用例を確認することができます。
 
-### 記事一覧
+### AIエンジニア向け記事一覧
 - [実践！BitNet b1.58を実装する](https://ai.ferix.jp/blog?id=nd-qq-au778i)
 - [ExecuTorchを用いたQuantization Aware Training実装](https://ai.ferix.jp/blog?id=ko5bd_adugq)
 
