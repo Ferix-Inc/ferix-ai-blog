@@ -88,7 +88,7 @@ int main(int argc, char** argv) {
       MemoryAllocator(sizeof(method_allocator_pool), method_allocator_pool)};
 
   std::vector<std::unique_ptr<uint8_t[]>> planned_buffers;
-  std::vector<Span<uint8_t>> planned_spans; 
+  std::vector<Span<uint8_t>> planned_spans;
   size_t num_memory_planned_buffers = method_meta->num_memory_planned_buffers();
   for (size_t id = 0; id < num_memory_planned_buffers; ++id) {
     size_t buffer_size =
@@ -112,13 +112,14 @@ int main(int argc, char** argv) {
   ET_LOG(Info, "Method loaded.");
 
   // Prepare inputs.
-  float data[1 * 1 * 28 * 28] = {0};
-  Tensor::SizesType sizes[] = {1, 1, 28, 28};
+  int row = 28, col = 28;
+  float data[1 * 1 * row * col] = {0};
+  Tensor::SizesType sizes[] = {1, 1, row, col};
   const char* image_path = FLAGS_image_path.c_str();
   cv::Mat img = cv::imread(image_path, cv::IMREAD_GRAYSCALE);
-  for (int i = 0; i < 28; ++i) {
-    for (int j = 0; j < 28; ++j) {
-      data[i * 28 + j] =
+  for (int i = 0; i < row; ++i) {
+    for (int j = 0; j < col; ++j) {
+      data[i * row + j] =
           (static_cast<float>(img.at<uchar>(i, j)) - 127.5f) / 127.5f;
     }
   }
