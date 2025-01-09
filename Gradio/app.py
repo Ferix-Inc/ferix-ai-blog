@@ -105,7 +105,7 @@ def process_audio(
     """
     if (state.use_image is True) and (state.current_image_path == ""):
         print("stanby...")
-        return None, state
+        return gr.skip()
 
     print(audio)
     sampling_rate = audio[0]
@@ -125,7 +125,7 @@ def process_audio(
     if (state.pause_detected) and (state.started_talking):
         return gr.Audio(recording=False), state
 
-    return None, state
+    return gr.skip(), state
 
 
 def response(state: AppState):
@@ -151,7 +151,7 @@ def response(state: AppState):
         6. Appends both text and audio responses to the conversation and chat history.
     """
     if (not state.pause_detected) and (not state.started_talking):
-        return None, AppState()
+        return gr.skip()
 
     audio_buffer = io.BytesIO()
     segment = AudioSegment(
