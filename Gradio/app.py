@@ -51,7 +51,7 @@ class AppState:
     """
 
     # audio
-    stream: np.ndarray = np.array([], dtype=np.int16)
+    stream: np.ndarray = field(default_factory=lambda: np.array([], dtype=np.int16))
     sampling_rate: int = 0
     pause_detected: bool = False
     started_talking: bool = False
@@ -78,10 +78,12 @@ def save_image(image_path, state: AppState) -> AppState:
     Returns:
         AppState: The updated application state with the current image path set.
     """
+    print("save_image", image_path)
     with Image.open(image_path) as im:
         if state.flip_image:
             im = ImageOps.mirror(im)
         im.save(image_path, "PNG")
+    print(image_path)
     state.current_image_path = image_path
     return state
 

@@ -94,7 +94,10 @@ def speech_to_text(client: OpenAI, audio_file: str, model="gpt") -> str:
                     {
                         "role": "user",
                         "content": [
-                            {"type": "text", "text": "Transcribe this recording."},
+                            {
+                                "type": "text",
+                                "text": "Accurately transcribe the following Japanese audio recording into clear, readable text. If nothing can be understood, return a single space.",
+                            },
                             {
                                 "type": "input_audio",
                                 "input_audio": {
