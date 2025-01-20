@@ -109,10 +109,10 @@ def process_audio(
         print("stanby...")
         return gr.skip()
 
-    print(audio)
     sampling_rate = audio[0]
     stream = audio[1]
-    assert stream.ndim == 1, "Audio must be single channel"
+    if stream.ndim == 2:
+        stream = stream.mean(axis=1, dtype=np.int16)
 
     state.sampling_rate = sampling_rate
     state.stream = np.concatenate([state.stream, stream])
